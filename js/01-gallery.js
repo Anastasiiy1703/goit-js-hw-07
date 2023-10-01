@@ -2,14 +2,57 @@
 // Change code below this line
 
 const container = document.querySelector(".gallery");
-
-const imagesAll = galleryItems.map((image) => `
-  <li>
-    <img src="${image.preview}" alt="${image.description}" />
+function createMarkup(arr) {
+  return arr.map(({preview, description })=> `
+   <li class="item js-item">
+    <img src="${preview}" alt="${description}" />
   </li>
-`).join('');
+  `).join('');
+}
+container.insertAdjacentHTML('afterbegin', createMarkup(galleryItems));
 
-container.insertAdjacentHTML('beforeend', imagesAll);
-container.classList.add("images");
 
-console.log(galleryItems);
+container.addEventListener('click', handlarClick);
+ function handlarClick (event) {
+  event.preventDefault();
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
+  const selectedImage = event.target.src;
+  const instance = basicLightbox.create(`
+    <div>
+      <img src="${selectedImage}" alt="${event.target.alt}">
+    </div>
+  `);
+
+  instance.show();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+
+
