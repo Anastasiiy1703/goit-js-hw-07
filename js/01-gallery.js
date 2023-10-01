@@ -3,14 +3,20 @@
 
 const container = document.querySelector(".gallery");
 function createMarkup(arr) {
-  return arr.map(({preview, description })=> `
-   <li class="item js-item">
-    <img src="${preview}" alt="${description}" />
-  </li>
+  return arr.map(({preview, original, description })=> `
+   <li class="gallery__item">
+  <a class="gallery__link" href="${preview}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</li>
   `).join('');
 }
 container.insertAdjacentHTML('afterbegin', createMarkup(galleryItems));
-
 
 container.addEventListener('click', handlarClick);
  function handlarClick (event) {
@@ -28,6 +34,7 @@ container.addEventListener('click', handlarClick);
 
   instance.show();
 };
+
 
 
 
