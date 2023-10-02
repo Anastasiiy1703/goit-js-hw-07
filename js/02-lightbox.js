@@ -14,21 +14,15 @@ function createMarkup(arr) {
 }
 container.insertAdjacentHTML('afterbegin', createMarkup(galleryItems));
 
-container.addEventListener('click', handlarClick);
- function handlarClick (event) {
-  event.preventDefault();
-  if (event.target === event.currentTarget) {
-    return;
-  }
 
-     let lightbox = new SimpleLightbox('.gallery__item a', {
-        captionType: 'attr',
-        captionPosition: 'bottom',
-         captionDelay: 250,
-         captionsData: `alt`
-    });
+  let lightbox = new SimpleLightbox('.gallery__item a', {
+  captionType: 'attr',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+  captionsData: `alt`
+  });
    
-};
+
  
 
 
